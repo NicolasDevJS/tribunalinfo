@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
-import decisoesData from '@/data/decisoes';
+
 
 const Container = styled.div`
   padding: 10px;
@@ -23,7 +23,7 @@ const DecisaoCard = styled.div`
 `;
 
 const Titulo = styled.h2`
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin: 0 0 8px 0;
 `;
 
@@ -34,11 +34,23 @@ const Categoria = styled.span`
   color: #555;
 `;
 
-const Data = styled.span`
-  display: block;
-  margin: 0;
-  color: #777;
-`;
+
+
+const truncate = (text, length) => {
+  if (!text) return '';
+  if (text.length <= length) return text;
+  return text.substring(0, length) + '...';
+};
+
+const capitalize = (text) => {
+  if (!text) return '';
+  return text.charAt(0) + text.slice(1).toLowerCase();
+};
+
+const formatData = (dataString) => {
+  const date = new Date(dataString);
+  return date.toLocaleDateString('pt-BR');
+};
 
 const RecentDecisions = () => {
   const [recentDecisions, setRecentDecisions] = useState([]);
@@ -92,9 +104,8 @@ const RecentDecisions = () => {
     >
       {recentDecisions.map((decisao) => (
         <DecisaoCard key={decisao.id} onClick={() => handleDecisaoClick(decisao)}>
-          <Titulo>{decisao.titulo}</Titulo>
-          <Categoria>Categoria: {decisao.categoria}</Categoria>
-          <Data>Data: {decisao.data}</Data>
+          <Titulo>{truncate(capitalize(decisao.descricaoClasse), 30)}</Titulo>
+          <Categoria>Tipo de Decisão: {decisao.tipoDeDecisao}</Categoria>
         </DecisaoCard>
       ))}
     </Container>
