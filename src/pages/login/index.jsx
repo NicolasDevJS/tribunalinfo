@@ -60,7 +60,7 @@ const Login = () => {
       setMessage(data.message);
 
       if (res.ok && isLogin) {
-        router.push('/'); 
+        router.push('/perfil'); 
       }
     } catch (error) {
       setMessage('Ocorreu um erro. Tente novamente.');

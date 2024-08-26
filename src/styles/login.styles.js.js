@@ -13,8 +13,8 @@ export const LoginBox = styled.div`
   padding: 2rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  width: 40vw;
-  height: 30vw;
+  width: 550px;
+  height: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
