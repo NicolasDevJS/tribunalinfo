@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 
-
 const Container = styled.div`
   padding: 10px;
   overflow-x: auto;
@@ -34,8 +33,6 @@ const Categoria = styled.span`
   color: #555;
 `;
 
-
-
 const truncate = (text, length) => {
   if (!text) return '';
   if (text.length <= length) return text;
@@ -44,12 +41,7 @@ const truncate = (text, length) => {
 
 const capitalize = (text) => {
   if (!text) return '';
-  return text.charAt(0) + text.slice(1).toLowerCase();
-};
-
-const formatData = (dataString) => {
-  const date = new Date(dataString);
-  return date.toLocaleDateString('pt-BR');
+  return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
 };
 
 const RecentDecisions = () => {
@@ -102,12 +94,14 @@ const RecentDecisions = () => {
       onMouseMove={handleMouseMove}
       style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
     >
-      {recentDecisions.map((decisao) => (
-        <DecisaoCard key={decisao.id} onClick={() => handleDecisaoClick(decisao)}>
-          <Titulo>{truncate(capitalize(decisao.descricaoClasse), 30)}</Titulo>
-          <Categoria>Tipo de Decisão: {decisao.tipoDeDecisao}</Categoria>
-        </DecisaoCard>
-      ))}
+      {recentDecisions
+        .filter(decisao => decisao.descricaoClasse && decisao.tipoDeDecisao) // Filtra decisões válidas
+        .map((decisao) => (
+          <DecisaoCard key={decisao.id} onClick={() => handleDecisaoClick(decisao)}>
+            <Titulo>{truncate(capitalize(decisao.descricaoClasse), 30)}</Titulo>
+            <Categoria>Tipo de Decisão: {decisao.tipoDeDecisao}</Categoria>
+          </DecisaoCard>
+        ))}
     </Container>
   );
 };

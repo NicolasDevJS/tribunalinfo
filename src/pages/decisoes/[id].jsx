@@ -30,15 +30,22 @@ const DecisaoExpandida = styled.div`
 `;
 
 const VoltarButton = styled.button`
-  padding: 10px 20px;
-  background-color: #0070f3;
-  color: white;
-  border: none;
-  border-radius: 5px;
+  padding: 15px 35px;
+  background: #ffffff;
+  border: 1px solid #cccccc; 
+  border-radius: 8px;
+  color: #000000;
+  font-size: 1rem;
   cursor: pointer;
+  transition: all 0.3s;
+  margin-right: 2vw;
+  font-weight: 500;
+  font-size: 20px;
 
   &:hover {
-    background-color: #005bb5;
+    background: #e2e2e2;
+    color: #000000;
+    border: 1px solid #bbbbbb;
   }
 `;
 
@@ -53,7 +60,7 @@ const Decisao = () => {
   }
 
   const handleVoltar = () => {
-    router.push('/');
+    router.push('/search');
   };
 
   return (

@@ -141,7 +141,7 @@ const Juris = ({ filtro }) => {
       <Grid>
         {currentItems.map((decisao) => (
           <DecisaoCard key={decisao.id} onClick={() => handleDecisaoClick(decisao)}>
-            <Titulo>{truncate(decisao.descricaoClasse, 20)}</Titulo>
+            <Titulo>{truncate(decisao.descricaoClasse, 30)}</Titulo>
             <Categoria>Tipo de Decisão: {decisao.tipoDeDecisao}</Categoria>
             <Descricao>{truncate(decisao.ementa, 100)}</Descricao>
             <Data>{decisao.dataPublicacao.split(' ').pop()}</Data>

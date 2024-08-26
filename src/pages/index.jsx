@@ -1,13 +1,16 @@
-import Head from 'next/head';
-import { useState } from 'react';
-import { useRouter } from 'next/router';
-import styled from 'styled-components';
-import Juris from '@/components/juris';
-import RecentDecisions from '@/components/RecentDecisions';
+import Head from "next/head";
+import { useState } from "react";
+import { useRouter } from "next/router";
+import styled from "styled-components";
+import { MdSearch } from "react-icons/md";  
+import Footer from "@/components/footer";
+import Questions from "@/components/questions";
+import TopJurisprudencias from "@/components/TopJurisprudencias";
+import ServicosCarrossel from "@/components/ServicosCarrossel";
 
 const Container = styled.div`
   min-height: 100vh;
-  padding: 80px 20px 20px 20px;
+  padding: 80px 20px 80px 20px; /* Ajuste o padding inferior */
   background-color: white;
   margin-top: 20px;
 `;
@@ -18,20 +21,7 @@ const Header = styled.header`
   left: 0;
   width: 100vw;
   height: 80px;
-  background-image: linear-gradient(
-    45deg,
-    hsl(240deg 100% 26%) 0%,
-    hsl(250deg 81% 25%) 10%,
-    hsl(254deg 64% 22%) 20%,
-    hsl(258deg 47% 19%) 30%,
-    hsl(262deg 27% 16%) 40%,
-    hsl(0deg 0% 13%) 50%,
-    hsl(262deg 27% 16%) 60%,
-    hsl(258deg 47% 19%) 70%,
-    hsl(254deg 64% 22%) 80%,
-    hsl(250deg 81% 25%) 90%,
-    hsl(240deg 100% 26%) 100%
-  );
+  background-color: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-between;
@@ -41,91 +31,132 @@ const Header = styled.header`
 `;
 
 const Title = styled.h1`
-  color: #ffffff;
+  color: #130066;
   margin: 0;
 `;
 
-const SearchContainer = styled.div`
-  display: flex;
-  gap: 10px;
-`;
-
-const SearchInput = styled.input`
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 200px;
-`;
-
-const Dropdown = styled.select`
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 200px;
-`;
-
 const LoginButton = styled.button`
-  padding: 8px 16px;
-  background: #00b609;
-  border: none;
-  border-radius: 4px;
-  color: white;
+  padding: 15px 35px;
+  background: #ffffff;
+  border: 1px solid #cccccc; 
+  border-radius: 8px;
+  color: #000000;
   font-size: 1rem;
   cursor: pointer;
-  transition: background 0.3s;
-  margin-right: 200px;
+  transition: all 0.3s;
+  margin-right: 2vw;
+  font-weight: 500;
+  font-size: 20px;
 
   &:hover {
-    background: #00ff00;
+    background: #e2e2e2;
+    color: #000000;
+    border: 1px solid #bbbbbb;
   }
 `;
 
+const SearchContainer = styled.div`
+  width: 1200px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 40px auto;
+`;
+
+const SearchTitle = styled.h2`
+  color: #000000;
+  font-size: 60px;
+  margin-bottom: 20px;
+`;
+
+const SearchWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+`;
+
+const SearchInput = styled.input`
+  padding: 25px;
+  padding-right: 50px; 
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 1rem;
+`;
+
+const SearchIcon = styled.button`
+  position: absolute;
+  right: 10px;
+  top: 55%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #000000;
+  font-size: 24px;
+
+  &:hover {
+    color: #626263;
+  }
+`;
+
+
+
 export default function Home() {
-  const [filtro, setFiltro] = useState('');
-  const [categoria, setCategoria] = useState('');
+  const [filtro, setFiltro] = useState("");
   const router = useRouter();
 
-  const handleCategoriaChange = (e) => {
-    setCategoria(e.target.value);
-    setFiltro(e.target.value);
+  const handleSearch = () => {
+    if (filtro.trim() !== "") {
+      router.push(`/search?query=${encodeURIComponent(filtro)}`);
+    }
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleSearch();
+    }
   };
 
   const navigateToLogin = () => {
-    router.push('/login');
+    router.push("/login");
+  };
+
+  const handleButton = (buttonNumber) => {
+    console.log(`Botão ${buttonNumber} clicado`);
   };
 
   return (
-    <Container>
-      <Head>
-        <title>Tribunal Info</title>
-      </Head>
-      <Header>
-        <Title>Tribunal Info</Title>
+    <>
+      <Container>
+        <Header>
+          <Title>Dejures</Title>
+          <LoginButton onClick={navigateToLogin}>
+            Entrar
+          </LoginButton>
+        </Header>
         <SearchContainer>
-          <Dropdown value={categoria} onChange={handleCategoriaChange}>
-            <option value="">Todos</option>
-            <option value="Trabalhista">Trabalhista</option>
-            <option value="Contratual">Contratual</option>
-            <option value="Cível">Cível</option>
-            <option value="Penal">Penal</option>
-            <option value="Tributário">Tributário</option>
-            <option value="Administrativo">Administrativo</option>
-            <option value="Ambiental">Ambiental</option>
-            <option value="Constitucional">Constitucional</option>
-          </Dropdown>
-          <SearchInput
-            type="text"
-            placeholder="Filtrar por categoria"
-            value={filtro}
-            onChange={(e) => setFiltro(e.target.value)}
-          />
+          <SearchTitle>Pesquisa completa de jurisprudência</SearchTitle>
+          <SearchWrapper>
+            <SearchInput
+              type="text"
+              placeholder="Digite sua pesquisa..."
+              value={filtro}
+              onChange={(e) => setFiltro(e.target.value)}
+              onKeyPress={handleKeyPress} 
+            />
+            <SearchIcon onClick={handleSearch}>
+              <MdSearch />
+            </SearchIcon>
+          </SearchWrapper>
         </SearchContainer>
-        <LoginButton onClick={navigateToLogin}>Login</LoginButton>
-      </Header>
-      <h2>Recentes</h2>
-      <RecentDecisions />
-      <Juris filtro={filtro} />
-    </Container>
+        <ServicosCarrossel/>
+        <TopJurisprudencias/>
+        <Questions /> 
+      </Container>
+      <Footer/>
+    </>
   );
 }
-
