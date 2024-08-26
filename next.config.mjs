@@ -1,7 +1,9 @@
-/** @type {import('next').NextConfig} */
+// next.config.mjs
+
 const nextConfig = {
+  // outDir: 'build', // Remova ou comente esta linha
   reactStrictMode: true,
-  outDir: 'build', 
-};
+  swcMinify: true,
+}
 
 export default nextConfig;
