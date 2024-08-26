@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, ProfileCard, ProfileInfo, ProfileImage, UserName, UserDetail, AddPhotoButton, ServicesContainer, ServiceCard, ServiceTitle, ServicePrice, ServiceDescription, ServiceList, ServiceItem, ServiceItemDesc, SubscribeButton } from './styles';
+import { Container, ProfileCard, ProfileInfo, ProfileImage, UserName, UserDetail, AddPhotoButton, ServicesContainer, ServiceCard, ServiceTitle, ServicePrice, ServiceDescription, ServiceList, ServiceItem, ServiceItemDesc, SubscribeButton } from './styles.module';
 import { FaUserCircle, FaCamera } from 'react-icons/fa';
 
 const UserHome = () => {
