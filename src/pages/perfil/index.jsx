@@ -1,8 +1,34 @@
-import React from 'react';
-import { Container, ProfileCard, ProfileInfo, ProfileImage, UserName, UserDetail, AddPhotoButton, ServicesContainer, ServiceCard, ServiceTitle, ServicePrice, ServiceDescription, ServiceList, ServiceItem, ServiceItemDesc, SubscribeButton } from '../../styles/perfil.styles';
-import { FaUserCircle, FaCamera } from 'react-icons/fa';
+import React, { useState, useEffect } from "react";
+import {
+  Container,
+  ProfileCard,
+  ProfileInfo,
+  Header,
+  Title,
+  ProfileImage,
+  UserName,
+  UserDetail,
+  AddPhotoButton,
+  ServicesContainer,
+  ServiceCard,
+  ServiceTitle,
+  ServicePrice,
+  ServiceDescription,
+  ServiceList,
+  ServiceItem,
+  ServiceItemDesc,
+  SubscribeButton,
+} from "../../styles/perfil.styles";
+import { FaUserCircle, FaCamera } from "react-icons/fa";
+import { useRouter } from 'next/router';
 
 const UserHome = () => {
+  const router = useRouter();
+
+  const navigateToHome = () => {
+    router.push("/");
+  };
+
   // Simulação de dados do usuário
   const user = {
     name: "Guisep",
@@ -19,20 +45,20 @@ const UserHome = () => {
       services: [
         {
           name: "Revisão de Documentos",
-          description: "Análise detalhada de documentos simples."
+          description: "Análise detalhada de documentos simples.",
         },
         {
           name: "Acesso ao Banco de Jurisprudências",
-          description: "Pesquise jurisprudências de diversos tribunais."
+          description: "Pesquise jurisprudências de diversos tribunais.",
         },
         {
           name: "Notificações de Processos",
-          description: "Receba atualizações sobre processos em andamento."
+          description: "Receba atualizações sobre processos em andamento.",
         },
         {
           name: "Suporte por E-mail",
-          description: "Atendimento rápido via e-mail."
-        }
+          description: "Atendimento rápido via e-mail.",
+        },
       ],
     },
     {
@@ -42,20 +68,20 @@ const UserHome = () => {
       services: [
         {
           name: "Consultas Jurídicas Ilimitadas",
-          description: "Acesso ilimitado a consultas jurídicas."
+          description: "Acesso ilimitado a consultas jurídicas.",
         },
         {
           name: "Revisão de Contratos",
-          description: "Revisão detalhada e feedback de contratos."
+          description: "Revisão detalhada e feedback de contratos.",
         },
         {
           name: "Acompanhamento de Processos",
-          description: "Monitoramento contínuo dos seus processos."
+          description: "Monitoramento contínuo dos seus processos.",
         },
         {
           name: "Suporte Telefônico Prioritário",
-          description: "Suporte por telefone com prioridade."
-        }
+          description: "Suporte por telefone com prioridade.",
+        },
       ],
     },
     {
@@ -65,26 +91,29 @@ const UserHome = () => {
       services: [
         {
           name: "Consultoria Jurídica Personalizada",
-          description: "Consultoria específica para suas necessidades."
+          description: "Consultoria específica para suas necessidades.",
         },
         {
           name: "Elaboração de Documentos Complexos",
-          description: "Criação de documentos detalhados e complexos."
+          description: "Criação de documentos detalhados e complexos.",
         },
         {
           name: "Monitoramento Avançado de Processos",
-          description: "Monitoramento detalhado com alertas personalizados."
+          description: "Monitoramento detalhado com alertas personalizados.",
         },
         {
           name: "Atendimento Exclusivo",
-          description: "Atendimento dedicado e personalizado."
-        }
+          description: "Atendimento dedicado e personalizado.",
+        },
       ],
     },
   ];
 
   return (
     <Container>
+      <Header>
+        <Title onClick={navigateToHome}>Dejures</Title>
+      </Header>
       <ProfileCard>
         <ProfileImage>
           <FaUserCircle size={80} />

@@ -10,6 +10,47 @@ export const Container = styled.div`
   background-color: #f5f5f5;
 `;
 
+export const Header = styled.header`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 80px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  z-index: 1000;
+`;
+
+export const Title = styled.h1`
+  color: #130066;
+  margin: 0;
+  cursor: pointer;
+`;
+
+export const LoginButton = styled.button`
+  padding: 15px 35px;
+  background: #ffffff;
+  border: 1px solid #cccccc; 
+  border-radius: 8px;
+  color: #000000;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-right: 2vw;
+  font-weight: 500;
+  font-size: 20px;
+
+  &:hover {
+    background: #e2e2e2;
+    color: #000000;
+    border: 1px solid #bbbbbb;
+  }
+`;
+
 export const ProfileCard = styled.div`
   width: 100%;
   max-width: 600px;
@@ -19,6 +60,7 @@ export const ProfileCard = styled.div`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
+  margin-top: 5vw;
   gap: 20px;
   margin-bottom: 20px;
 `;
