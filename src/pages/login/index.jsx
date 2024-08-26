@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router'; // Importa useRouter
 import { createGlobalStyle } from 'styled-components';
-import * as S from './styles.module';
+import * as S from '../../styles/login.styles.js';
 
 const GlobalStyle = createGlobalStyle`
   body, html {
