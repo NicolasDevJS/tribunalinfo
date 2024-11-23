@@ -2,9 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import Header from "@/components/common/Header";
-import Footer from "@/components/common/Footer";
 import styled from "styled-components";
-import Juris from "@/components/jurisprudencia/jurisprudencia";
+import Juris from "@/components/home/Jurisprudencia";
 import Loader from "@/components/common/Loader";
 
 const Container = styled.div`
@@ -32,7 +31,6 @@ const Jurisprudencias = () => {
       <Container>
         <Juris />
       </Container>
-      <Footer />
     </>
   );
 };
