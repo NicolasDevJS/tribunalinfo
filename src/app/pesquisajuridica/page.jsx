@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Header from "@/components/common/Header";
-import Footer from "../../components/common/Footer";
+import FooterR from "@/components/common/FooterR";
 import Loader from "@/components/common/Loader"; 
 import ProcessSearch from "@/components/pesquisajuridica/SeachProcess";
 
@@ -33,7 +33,7 @@ export default function pesquisajuridica() {
       <Container>
     <ProcessSearch/>
       </Container>
-      <Footer />
+      <FooterR/>
     </>
   );
 }

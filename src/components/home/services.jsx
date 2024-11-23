@@ -19,7 +19,6 @@ const ServicesContainer = styled.div`
     align-items: center;
     gap: 20px;
   }
-
 `;
 
 const ServiceItem = styled.a`
@@ -41,7 +40,6 @@ const ServiceItem = styled.a`
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    
   }
 
   @media (max-width: 768px) {
@@ -53,7 +51,6 @@ const ServiceItem = styled.a`
   @media (min-width: 768px) {
     width: 260px;
     height: 300px;
-    
   }
 `;
 
@@ -111,7 +108,7 @@ const LearnMore = styled.div`
   }
 `;
 
-const Services = () => {
+export default function Services() {
   const servicesData = [
     {
       icon: <FaFileAlt />,
@@ -132,7 +129,7 @@ const Services = () => {
       title: "Consulta de Jurisprudências",
       description:
         "Explore um amplo banco de jurisprudências para fortalecer seus argumentos jurídicos, com pesquisa rápida e filtros avançados.",
-        link: "/jurisprudencia",
+      link: "/jurisprudencia",
     },
     {
       icon: <MdSearch />,
@@ -159,6 +156,4 @@ const Services = () => {
       ))}
     </ServicesContainer>
   );
-};
-
-export default Services;
+}
