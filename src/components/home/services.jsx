@@ -19,6 +19,7 @@ const ServicesContainer = styled.div`
     align-items: center;
     gap: 20px;
   }
+  
 `;
 
 const ServiceItem = styled.a`
