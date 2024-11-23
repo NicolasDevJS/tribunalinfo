@@ -67,7 +67,7 @@ const Data = styled.p`
   align-self: flex-end;
 `;
 
-const Juris = ({ filters = {} }) => {
+const Jurisprudencia = ({ filters = {} }) => {
     const {
       searchQuery = "",
       sessoes = "Todas as Sessões",
@@ -163,5 +163,5 @@ const Juris = ({ filters = {} }) => {
     );
   };
   
-  export default Juris;
+  export default Jurisprudencia;
   
