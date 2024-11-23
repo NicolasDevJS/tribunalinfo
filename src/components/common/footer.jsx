@@ -41,7 +41,6 @@ const ContactInfo = styled.div`
     font-size: 1.1rem;
     white-space: nowrap;
 
-
     &:not(:nth-child(2)) {
       @media (max-width: 600px) {
         display: none;
@@ -74,7 +73,7 @@ const SocialIcons = styled.div`
   }
 `;
 
-const Footer = () => {
+export default function Footer() {
   return (
     <FooterWrapper>
       <FooterContainer>
@@ -97,6 +96,4 @@ const Footer = () => {
       </FooterContainer>
     </FooterWrapper>
   );
-};
-
-export default Footer;
+}
