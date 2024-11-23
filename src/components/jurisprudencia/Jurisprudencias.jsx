@@ -64,11 +64,11 @@ const Descricao = styled.p`
 const Data = styled.p`
   font-size: 0.9rem;
   color: #999;
-  
+
   align-self: flex-end;
 `;
 
-const Jurisprudencia = ({ filters = {} }) => {
+const Jurisprudencias = ({ filters = {} }) => {
     const {
       searchQuery = "",
       sessoes = "Todas as Sessões",
@@ -164,5 +164,5 @@ const Jurisprudencia = ({ filters = {} }) => {
     );
   };
   
-  export default Jurisprudencia;
+  export default Jurisprudencias;
   

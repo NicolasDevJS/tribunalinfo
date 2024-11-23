@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Header from "@/components/common/Header";
-import Footer from "@/components/common/Footer";
+import Footer from "../components/common/Footer";
 import SearchSection from "@/components/home/SearchSection";
 import ServicosCarrossel from "@/components/home/ServicosCarrossel";
 import TopJurisprudencias from "@/components/home/TopJurisprudencias";

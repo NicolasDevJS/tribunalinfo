@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Header from "@/components/common/Header";
-import Footer from "@/components/common/Footer";
+import Footer from "../../components/common/Footer";
 import Loader from "@/components/common/Loader"; 
 import ProcessSearch from "@/components/pesquisajuridica/SeachProcess";
 

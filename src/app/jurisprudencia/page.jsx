@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "@/components/common/Header";
 import styled from "styled-components";
-import Jurisprudencia from "@/components/jurisprudencia/Jurisprudencia";
+import Jurisprudencia from "@/components/Jurisprudencias/Jurisprudencias";
 import Loader from "@/components/common/Loader";
 
 const Container = styled.div`
@@ -13,7 +13,7 @@ const Container = styled.div`
   margin-top: 20px;
 `;
 
-const Jurisprudencias = () => {
+const Jurisprudencia = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -35,4 +35,4 @@ const Jurisprudencias = () => {
   );
 };
 
-export default Jurisprudencias;
+export default Jurisprudencia;
