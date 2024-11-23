@@ -7,7 +7,7 @@ import FooterR from "@/components/common/FooterR";
 import SearchSection from "@/components/home/SearchSection";
 import ServicosCarrossel from "@/components/home/ServicosCarrossel";
 import TopJurisprudencias from "@/components/home/TopJurisprudencias";
-import Services from "../components/home/Services";
+import Servicos from "@/components/home/servicos";
 import Loader from "@/components/common/Loader"; 
 
 const Container = styled.div`
@@ -35,7 +35,7 @@ export default function Home() {
       <Header />
       <Container>
         <SearchSection />
-        <Services />
+        <Servicos/>
         <TopJurisprudencias />
         <ServicosCarrossel />
       </Container>
