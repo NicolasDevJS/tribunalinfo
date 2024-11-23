@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "@/components/common/Header";
 import styled from "styled-components";
-import Jurisprudencia from "@/components/Jurisprudencias/Jurisprudencias";
+import Jurisprudencias from "@/components/Jurisprudencias/Jurisprudencias";
 import Loader from "@/components/common/Loader";
 
 const Container = styled.div`
@@ -29,7 +29,7 @@ const Jurisprudencia = () => {
     <>
       <Header />
       <Container>
-        <Jurisprudencia/>
+        <Jurisprudencias/>
       </Container>
     </>
   );
