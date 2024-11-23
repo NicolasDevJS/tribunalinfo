@@ -64,6 +64,7 @@ const Descricao = styled.p`
 const Data = styled.p`
   font-size: 0.9rem;
   color: #999;
+  
   align-self: flex-end;
 `;
 
