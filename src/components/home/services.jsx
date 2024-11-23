@@ -19,7 +19,7 @@ const ServicesContainer = styled.div`
     align-items: center;
     gap: 20px;
   }
-  
+
 `;
 
 const ServiceItem = styled.a`
@@ -41,6 +41,7 @@ const ServiceItem = styled.a`
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    
   }
 
   @media (max-width: 768px) {
