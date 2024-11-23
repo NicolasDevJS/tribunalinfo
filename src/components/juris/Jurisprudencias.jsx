@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import styled from "styled-components";
-import Search from "../jurisprudencia/Search";
+import Search from "./Search";
 import decisoesData from "@/data/decisoes";
 
 const Container = styled.div`
