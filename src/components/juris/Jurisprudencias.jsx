@@ -33,11 +33,16 @@ const DecisaoCard = styled.div`
   overflow: hidden;
   position: relative;
   min-height: 600px;
+  max-height: 850px;
 
   &:hover {
     transform: scale(1.02);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
+  }
+
+  @media (max-width: 780px) {
+    max-height: 400px;
   }
 `;
 

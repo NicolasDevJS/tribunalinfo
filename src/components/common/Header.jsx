@@ -86,6 +86,7 @@ const Button = styled.button`
 
   @media (max-width: 600px) {
     display: ${(props) => (props.$mobileOnly ? "none" : "flex")};
+    font-size: 0.8rem;
   }
 `;
 

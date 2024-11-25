@@ -35,8 +35,9 @@ const SearchWrapper = styled.div`
   margin-bottom: 10px;
 `;
 
+
 const SearchInput = styled.input`
-  padding: 15px 50px 15px 15px;
+  padding: 15px 15px 15px 50px; /* Ajuste o padding para espaço ao ícone */
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 20px;
@@ -51,8 +52,8 @@ const SearchInput = styled.input`
 
 const SearchIcon = styled.button`
   position: absolute;
-  right: 15px;
-  top: 50%;
+  right: 1px;
+  top: 55%;
   transform: translateY(-50%);
   background: none;
   border: none;

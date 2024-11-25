@@ -43,7 +43,7 @@ const ServiceItem = styled.a`
   }
 
   @media (max-width: 768px) {
-    width: 85%;
+    width: 95%;
     height: 250px;
     padding: 15px;
   }

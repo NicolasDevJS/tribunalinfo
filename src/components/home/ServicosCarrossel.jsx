@@ -48,14 +48,14 @@ const slide = keyframes`
 const CarouselContainer = styled.div`
   display: flex;
   width: calc(400px * 14 + 120px);
-  animation: ${slide} 30s linear infinite;
+  animation: ${slide} 50s linear infinite;
 
   @media (max-width: 768px) {
     width: 100%;
-    animation: none; /* Desativa o movimento automático no mobile */
-    overflow-x: scroll; /* Habilita o scroll horizontal */
-    scroll-snap-type: x mandatory; /* Para scroll suave */
-    gap: 10px; /* Espaçamento entre os cartões */
+    animation: none; 
+    overflow-x: scroll; 
+    scroll-snap-type: x mandatory; 
+    gap: 10px;
   }
 `;
 
@@ -71,13 +71,13 @@ const Card = styled.div`
   flex-shrink: 0;
 
   @media (max-width: 768px) {
-    width: 300px; /* Ajusta a largura do cartão no mobile */
+    width: 300px; 
     height: 180px;
-    scroll-snap-align: center; /* Alinha no centro ao rolar */
+    scroll-snap-align: center; 
   }
 
   @media (max-width: 480px) {
-    width: 260px; /* Largura menor em telas pequenas */
+    width: 260px; 
     height: 160px;
     padding: 15px;
   }

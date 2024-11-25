@@ -55,25 +55,26 @@ const SearchIcon = styled.button`
 `;
 
 const FilterContainer = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 15px;
   margin-top: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
 `;
 
 const FilterButton = styled.button`
   background-color: ${(props) => (props.$selected ? "#191970" : "white")};
   color: ${(props) => (props.$selected ? "white" : "#191970")};
   border: 2px solid #191970;
-  padding: 15px 30px;
+  padding: 15px;
   border-radius: 25px;
   font-size: 1rem;
   cursor: pointer;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   gap: 5px;
   transition: all 0.3s ease;
+  width: 100%;
 
   &:hover {
     background-color: #191970;
@@ -104,19 +105,14 @@ const FilterButton = styled.button`
 const DropdownMenu = styled.div`
   position: absolute;
   top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 200px;
+  left: 0;
+  width: 100%;
   background: #ffffff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   padding: 10px 0;
   display: ${(props) => (props.$open ? "block" : "none")};
   z-index: 10;
-
-  @media (max-width: 768px) {
-    width: 150px;
-  }
 `;
 
 const DropdownItem = styled.div`
@@ -146,7 +142,6 @@ const allOptions = {
     { id: 7, label: "Legislação" },
     { id: 8, label: "Consulta Processual" },
     { id: 9, label: "Doutrina" },
-
   ],
   tipos: [
     { id: 1, label: "Todos os julgados" },
@@ -172,12 +167,7 @@ const allOptions = {
 
 export default function Search({ onSearch }) {
   const [searchQuery, setSearchQuery] = useState("");
-  const [dropdownState, setDropdownState] = useState({
-    sessoes: false,
-    tipos: false,
-    tribunais: false,
-    datas: false,
-  });
+  const [dropdownState, setDropdownState] = useState(null);
   const [selectedFilters, setSelectedFilters] = useState({
     sessoes: "Todas as Sessões",
     tipos: "Todos os julgados",
@@ -186,10 +176,7 @@ export default function Search({ onSearch }) {
   });
 
   const toggleDropdown = (filter) => {
-    setDropdownState((prevState) => ({
-      ...prevState,
-      [filter]: !prevState[filter],
-    }));
+    setDropdownState((prevState) => (prevState === filter ? null : filter));
   };
 
   const handleSelection = (filter, option) => {
@@ -197,10 +184,7 @@ export default function Search({ onSearch }) {
       ...prevState,
       [filter]: option.label,
     }));
-    setDropdownState((prevState) => ({
-      ...prevState,
-      [filter]: false,
-    }));
+    setDropdownState(null);
   };
 
   const handleSearch = (value) => {
@@ -212,7 +196,7 @@ export default function Search({ onSearch }) {
   };
 
   useEffect(() => {
-    handleSearch(); // Trigger search when filters or input change
+    handleSearch();
   }, [selectedFilters, searchQuery]);
 
   return (
@@ -233,12 +217,12 @@ export default function Search({ onSearch }) {
         {Object.entries(allOptions).map(([key, options]) => (
           <div key={key} style={{ position: "relative" }}>
             <FilterButton
-              $selected={dropdownState[key]}
+              $selected={dropdownState === key}
               onClick={() => toggleDropdown(key)}
             >
               {selectedFilters[key]} <IoIosArrowDown />
             </FilterButton>
-            <DropdownMenu $open={dropdownState[key]}>
+            <DropdownMenu $open={dropdownState === key}>
               {options.map((option) => (
                 <DropdownItem
                   key={option.id}

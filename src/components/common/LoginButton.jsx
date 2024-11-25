@@ -13,7 +13,7 @@ const LoginButtonWrapper = styled.button`
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s;
-  margin-right: 2vw;
+  margin-right: 10px;
   font-weight: 500;
   font-size: 20px;
 
@@ -27,6 +27,7 @@ const LoginButtonWrapper = styled.button`
   @media (max-width: 768px) {
     padding: 12px 25px;
     font-size: 0.9rem;
+    margin-right: 15px;
 
   }
 `;
@@ -193,7 +194,7 @@ export default function LoginButton() {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => {
     setIsModalOpen(false);
-    setIsResetPassword(false); // Reseta o modal ao fechar
+    setIsResetPassword(false); 
     setErrorMessage("");
     setShowResetLink(false);
   };
@@ -212,11 +213,11 @@ export default function LoginButton() {
     }
     if (email !== "user@example.com" || password !== "password123") {
       setErrorMessage("Login ou senha incorretos.");
-      setShowResetLink(true); // Mostra o link de redefinir senha após erro
+      setShowResetLink(true); 
       return;
     }
 
-    setErrorMessage(""); // Limpa mensagens de erro ao fazer login com sucesso
+    setErrorMessage(""); 
     alert("Login bem-sucedido!");
   };
 
@@ -228,9 +229,9 @@ export default function LoginButton() {
       return;
     }
 
-    setErrorMessage(""); // Limpa mensagens de erro
+    setErrorMessage(""); 
     alert("Instruções para redefinir sua senha foram enviadas!");
-    closeModal(); // Fecha o modal após o envio
+    closeModal(); 
   };
 
   return (

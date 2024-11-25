@@ -1,15 +1,14 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import decisoesData from "@/data/decisoes";
 
-
 const Container = styled.div`
   width: 100%;
-  padding: 20px;
+  padding: 20px 0;
   background-color: #ffffff;
   color: #00264e;
   text-align: center;
@@ -17,7 +16,7 @@ const Container = styled.div`
   user-select: none;
 
   @media (max-width: 768px) {
-    padding: 10px;
+    padding: 10px 0;
   }
 `;
 
@@ -38,25 +37,17 @@ const Title = styled.h2`
 
 const CarouselContainer = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
   position: relative;
-  overflow: hidden; 
+  overflow: hidden;
 `;
 
-const CardContainer = styled.div`
+const CardWrapper = styled.div`
   display: flex;
-  width: 100%;
-  cursor: grab; 
-
-  @media (max-width: 768px) {
-    overflow-x: scroll; 
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
+  transition: transform 0.5s ease-in-out;
+  width: max-content;
+  transform: ${({ $translateValue }) => `translateX(${$translateValue}px)`};
 `;
-
-
 
 const Card = styled.div`
   height: 240px;
@@ -71,28 +62,19 @@ const Card = styled.div`
   color: #00264e;
   overflow: hidden;
   scroll-snap-align: center;
-  
 
   @media (max-width: 768px) {
-    width: 280px;
+  
     height: 220px;
     padding: 15px;
   }
 
   @media (max-width: 480px) {
-    width: 240px;
-    height: 200px;
+
+    height: 220px;
     padding: 10px;
+    right: 40px;
   }
-`;
-
-
-
-
-const FakeCard = styled(Card)`
-  background-color: transparent;
-  border: none;
-  box-shadow: none;
 `;
 
 const CardTitle = styled.h3`
@@ -126,152 +108,119 @@ const Category = styled.p`
 const Description = styled.p`
   font-size: 14px;
   color: #000;
-  overflow: hidden;
+  overflow: auto;
   text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 6;
-  -webkit-box-orient: vertical;
+  flex-grow: 1;
+  margin-bottom: 10px;
 
   @media (max-width: 768px) {
     font-size: 12px;
-    -webkit-line-clamp: 4;
   }
 
   @media (max-width: 480px) {
-    font-size: 10px;
-    -webkit-line-clamp: 3;
+    font-size: 12px;
   }
 `;
 
-const Navigation = styled.div`
+
+const NavButton = styled.div`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
-  justify-content: center;
   align-items: center;
-  margin-top: 20px;
-  gap: 10px;
-
-  @media (max-width: 768px) {
-    justify-content: space-between;
-  }
-`;
-
-const NavButton = styled.button`
-  background: none;
-  border: none;
-  color: #00264e;
-  font-size: 24px;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
   cursor: pointer;
+  z-index: 10;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-  &:disabled {
-    color: #ccc;
-    cursor: default;
+  svg {
+    font-size: 32px; 
+    color: #191970;
   }
 
-  &:hover:enabled {
-    color: #0056b3;
+  &:hover {
+    transform: translateY(-50%) scale(1.2);
+  }
+
+  &:first-child {
+    left: -10px;
+  }
+
+  &:last-child {
+    right: -10px;
   }
 
   @media (max-width: 768px) {
-    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
   }
 `;
-
-const PageIndicator = styled.span`
-  font-size: 16px;
-  color: #666;
-
-  @media (max-width: 768px) {
-    font-size: 14px;
-  }
-`;
-
-const CardWrapper = styled.div`
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-  width: max-content;
-  transform: ${({ $translateValue }) => `translateX(${$translateValue}px)`}; // Dinâmica, mas no CSS
-`;
-
 
 export default function TopJurisprudencias() {
-  const [currentPage, setCurrentPage] = useState(0);
-  const itemsPerPage = 4;
-
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [itemsToShow, setItemsToShow] = useState(3);
+  const cardWidth = 350;
   const displayedItems = decisoesData.slice(0, 10);
 
-  const totalPages = Math.ceil(displayedItems.length / itemsPerPage);
+  useEffect(() => {
+    const handleResize = () => {
+      const containerWidth = window.innerWidth;
+      const newItemsToShow = Math.floor(containerWidth / (cardWidth + 20));
+      setItemsToShow(newItemsToShow);
+    };
 
-  const translateValue = -currentPage * (350 * itemsPerPage + 40);
+    handleResize();
+    window.addEventListener("resize", handleResize);
 
-  const containerRef = useRef(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
-  const handlePrevPage = () => {
-    setCurrentPage((prevPage) => Math.max(prevPage - 1, 0));
+  const translateValue = -(currentIndex * (cardWidth + 20));
+
+  const handlePrev = () => {
+    if (currentIndex === 0) {
+      setCurrentIndex(displayedItems.length - itemsToShow);
+    } else {
+      setCurrentIndex((prevIndex) => prevIndex - 1);
+    }
   };
 
-  const handleNextPage = () => {
-    setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages - 1));
-  };
-
-  const startDrag = (e) => {
-    setIsDragging(true);
-    setStartX(e.pageX || e.touches[0].pageX); 
-    setScrollLeft(containerRef.current.scrollLeft);
-  };
-
-  const onDrag = (e) => {
-    if (!isDragging) return;
-    const x = e.pageX || e.touches[0].pageX; 
-    const walk = (x - startX) * 1; 
-    containerRef.current.scrollLeft = scrollLeft - walk;
-  };
-
-  const endDrag = () => {
-    setIsDragging(false);
+  const handleNext = () => {
+    if (currentIndex >= displayedItems.length - itemsToShow) {
+      setCurrentIndex(0);
+    } else {
+      setCurrentIndex((prevIndex) => prevIndex + 1);
+    }
   };
 
   return (
     <Container>
       <Title>Jurisprudências mais acessadas da semana</Title>
       <CarouselContainer>
-        <CardContainer
-          ref={containerRef}
-          onMouseDown={startDrag}
-          onMouseMove={onDrag}
-          onMouseUp={endDrag}
-          onMouseLeave={endDrag}
-          onTouchStart={startDrag}
-          onTouchMove={onDrag}
-          onTouchEnd={endDrag}
-        >
-          <CardWrapper $translateValue={translateValue}>
-            {displayedItems.map((item, index) => (
-              <Link href={`/decisoes/${item.id}`} key={index} passHref>
-                <Card>
-                  <CardTitle>{item.descricaoClasse}</CardTitle>
-                  <Category>{item.nomeOrgaoJulgador}</Category>
-                  <Description>{item.ementa}</Description>
-                </Card>
-              </Link>
-            ))}
-            <FakeCard />
-          </CardWrapper>
-        </CardContainer>
-      </CarouselContainer>
-      <Navigation>
-        <NavButton onClick={handlePrevPage} disabled={currentPage === 0}>
+        <NavButton onClick={handlePrev}>
           <FaChevronLeft />
         </NavButton>
-        <NavButton onClick={handleNextPage} disabled={currentPage === totalPages - 1}>
+
+        <CardWrapper $translateValue={translateValue}>
+          {displayedItems.map((item, index) => (
+            <Link href={`/jurisprudencia/pesquisa/${item.id}`} key={index} passHref>
+              <Card>
+                <CardTitle>{item.descricaoClasse}</CardTitle>
+                <Category>{item.nomeOrgaoJulgador}</Category>
+                <Description>{item.ementa}</Description>
+              </Card>
+            </Link>
+          ))}
+        </CardWrapper>
+
+        <NavButton onClick={handleNext}>
           <FaChevronRight />
         </NavButton>
-        <PageIndicator>
-          {currentPage + 1} / {totalPages}
-        </PageIndicator>
-      </Navigation>
+      </CarouselContainer>
     </Container>
   );
 }
