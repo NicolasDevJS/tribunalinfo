@@ -36,28 +36,6 @@ const Data = styled.span`
   margin-bottom: 10px;
 `;
 
-const DecisaoExpandida = styled.div`
-  margin-bottom: 20px;
-`;
-
-const VoltarButton = styled.button`
-  padding: 15px 35px;
-  background: #ffffff;
-  border: 1px solid #cccccc;
-  border-radius: 8px;
-  color: #000000;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s;
-  margin-bottom: 20px;
-
-  &:hover {
-    background: #e2e2e2;
-    color: #000000;
-    border: 1px solid #bbbbbb;
-  }
-`;
-
 const DecisaoDetalhes = styled.div`
   margin-top: 20px;
   padding: 20px;
