@@ -19,7 +19,7 @@ export default function pesquisajuridica() {
 
   
   useEffect(() => {
-    const timeout = setTimeout(() => setLoading(false), 500);
+    const timeout = setTimeout(() => setLoading(false), 100);
     return () => clearTimeout(timeout);
   }, []);
 

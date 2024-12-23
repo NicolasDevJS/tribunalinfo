@@ -34,11 +34,11 @@ const FooterContainer = styled.div`
 const ContactInfo = styled.div`
   display: flex;
   gap: 15px;
-  font-size: 1rem;
+  font-size: 0.8rem;
   justify-content: center;
 
   span {
-    font-size: 1.1rem;
+    font-size: 0.8rem;
     white-space: nowrap;
 
     &:not(:nth-child(2)) {

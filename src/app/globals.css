@@ -7,7 +7,7 @@
 }
 
 :root {
-  --font-family: 'Arial', sans-serif;
+  --font-family: 'Montserrat', sans-serif; /* Fonte principal */
   --background-color: #f9f9f9;
   --text-color: #333;
   --primary-color: #0070f3;
@@ -17,11 +17,10 @@
 
 html, body {
   height: 100%;
-  font-family: var(--font-family);
+  font-family: var(--font-family); /* Aplicando a fonte global */
   background-color: var(--background-color);
   color: var(--text-color);
 }
-
 
 a {
   text-decoration: none;
@@ -37,7 +36,6 @@ button {
   cursor: pointer;
 }
 
-
 ul, ol {
   list-style: none;
 }
@@ -47,7 +45,6 @@ img {
   height: auto;
   display: block;
 }
-
 
 html {
   font-size: 100%;

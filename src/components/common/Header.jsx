@@ -1,15 +1,16 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { IoIosArrowDown } from "react-icons/io";
 import Link from "next/link";
 import LoginButton from "./LoginButton";
+import Sidebar from "./Sidebar";
 
 const HeaderContainer = styled.header`
   width: 100%;
   height: 80px;
-  min-height: 60px; 
+  min-height: 60px;
   background-color: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -25,7 +26,6 @@ const HeaderContainer = styled.header`
     height: auto;
   }
 `;
-
 
 const LogoAndNav = styled.div`
   display: flex;
@@ -128,6 +128,12 @@ const DropdownItem = styled.a`
 
 export default function Header() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [token, setToken] = useState(null);
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem("token");
+    setToken(storedToken);
+  }, []);
 
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
   const closeDropdown = () => setDropdownOpen(false);
@@ -135,7 +141,7 @@ export default function Header() {
   return (
     <HeaderContainer>
       <LogoAndNav>
-      <Link href="/" passHref>
+        <Link href="/" passHref>
           <Logo>Dejures</Logo>
         </Link>
         <Nav>
@@ -170,7 +176,7 @@ export default function Header() {
           </Link>
         </Nav>
       </LogoAndNav>
-      <LoginButton />
+      {token ? <Sidebar /> : <LoginButton />}
     </HeaderContainer>
   );
 }

@@ -23,16 +23,16 @@ const SearchContainer = styled.div`
 
 const SearchTitle = styled.h2`
   color: #191970;
-  font-size: 50px;
+  font-size: 3rem;
   margin-bottom: 20px;
   text-align: center;
 
   @media (max-width: 768px) {
-    font-size: 36px;
+    font-size: 2rem;
   }
 
   @media (max-width: 480px) {
-    font-size: 28px;
+    font-size: 1.5rem;
   }
 `;
 

@@ -22,7 +22,7 @@ const Container = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: 24px;
+  font-size: 1.1rem;
   margin-bottom: 20px;
 
   @media (max-width: 768px) {
@@ -84,20 +84,12 @@ const Card = styled.div`
 `;
 
 const CardTitle = styled.h3`
-  font-size: 20px;
+  font-size: 1rem;
   margin-bottom: 10px;
-
-  @media (max-width: 768px) {
-    font-size: 18px;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 16px;
-  }
 `;
 
 const Description = styled.p`
-  font-size: 16px;
+  font-size: 0.8rem;
   color: #000;
 
   @media (max-width: 768px) {

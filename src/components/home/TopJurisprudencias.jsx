@@ -78,7 +78,7 @@ const Card = styled.div`
 `;
 
 const CardTitle = styled.h3`
-  font-size: 18px;
+  font-size: 1rem;
   margin-bottom: 10px;
 
   @media (max-width: 768px) {
@@ -106,7 +106,7 @@ const Category = styled.p`
 `;
 
 const Description = styled.p`
-  font-size: 14px;
+  font-size: 0.8rem;
   color: #000;
   overflow: auto;
   text-overflow: ellipsis;

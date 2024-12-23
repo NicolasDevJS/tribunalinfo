@@ -50,7 +50,7 @@ const DecisaoCard = styled.div`
 const Titulo = styled.h2`
   font-size: 1.2rem;
   margin-bottom: 15px;
-  color: #191970; /* Nova cor para o título */
+  color: #191970; 
 `;
 
 const Categoria = styled.p`
@@ -93,7 +93,9 @@ const Jurisprudencias = ({ filters = {} }) => {
 
   const matchSessoes = (decisao, sessoes) => {
     if (sessoes === "Todas as Sessões") return true;
-    return decisao.termosAuxiliares?.toLowerCase().includes(sessoes.toLowerCase());
+    return decisao.termosAuxiliares
+      ?.toLowerCase()
+      .includes(sessoes.toLowerCase());
   };
 
   const matchTipos = (decisao, tipos) => {
@@ -103,7 +105,9 @@ const Jurisprudencias = ({ filters = {} }) => {
 
   const matchTribunais = (decisao, tribunais) => {
     if (tribunais === "Todos") return true;
-    return decisao.nomeOrgaoJulgador?.toLowerCase().includes(tribunais.toLowerCase());
+    return decisao.nomeOrgaoJulgador
+      ?.toLowerCase()
+      .includes(tribunais.toLowerCase());
   };
 
   const matchDatas = (decisao, datas) => {
@@ -112,7 +116,9 @@ const Jurisprudencias = ({ filters = {} }) => {
     const hoje = new Date();
     const dataMatch = decisao.dataPublicacao.match(/\d{2}\/\d{2}\/\d{4}/);
     if (!dataMatch) return false;
-    const dataPublicacao = new Date(dataMatch[0].split("/").reverse().join("-"));
+    const dataPublicacao = new Date(
+      dataMatch[0].split("/").reverse().join("-")
+    );
 
     if (datas === "Último mês") {
       const umMesAtras = new Date();
@@ -159,15 +165,19 @@ const Jurisprudencias = ({ filters = {} }) => {
       <Grid>
         {filteredDecisoes.map((decisao) => (
           <DecisaoCard key={decisao.id}>
-            <Link href={`/jurisprudencia/pesquisa/${decisao.id}`} legacyBehavior>
-  <a>
-    <Titulo>{decisao.descricaoClasse}</Titulo>
-    <Categoria>Tipo de Decisão: {decisao.tipoDeDecisao}</Categoria>
-    <Descricao>{decisao.ementa}</Descricao>
-    <Data>Data de Publicação: {decisao.dataPublicacao.split("DATA:")[1]}</Data>
-  </a>
-</Link>
-
+            <Link
+              href={`/jurisprudencia/pesquisa/${decisao.id}`}
+              legacyBehavior
+            >
+              <a>
+                <Titulo>{decisao.descricaoClasse}</Titulo>
+                <Categoria>Tipo de Decisão: {decisao.tipoDeDecisao}</Categoria>
+                <Descricao>{decisao.ementa}</Descricao>
+                <Data>
+                  Data de Publicação: {decisao.dataPublicacao.split("DATA:")[1]}
+                </Data>
+              </a>
+            </Link>
           </DecisaoCard>
         ))}
       </Grid>

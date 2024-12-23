@@ -1,17 +1,17 @@
 "use client";
 
 import "./globals.css";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        {children}
-
-      </body>
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body>{children}</body>
     </html>
   );
 }

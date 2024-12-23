@@ -64,7 +64,7 @@ const IconWrapper = styled.div`
 `;
 
 const Title = styled.h3`
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #0a2540;
   margin: 10px 0 5px;
   text-align: center;
@@ -122,7 +122,7 @@ export default function Servicos() {
       title: "Cálculos Jurídicos",
       description:
         "Obtenha cálculos detalhados e precisos para fundamentar decisões jurídicas complexas, com suporte a índices atualizados e regras claras.",
-      link: "/",
+      link: "/painel-de-calculos",
     },
     {
       icon: <FaBalanceScale />,
