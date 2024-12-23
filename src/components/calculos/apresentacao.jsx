@@ -2,7 +2,7 @@
 
 import React from "react";
 import styled from "styled-components";
-import data from "@/data/CalculosData";
+import data from "../../data/calculosData";
 
 const ApresentacaoContainer = styled.div`
   width: 100%;
