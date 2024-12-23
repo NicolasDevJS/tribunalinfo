@@ -12,7 +12,7 @@ const HeaderContainer = styled.header`
   height: 80px;
   min-height: 60px;
   background-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -86,7 +86,7 @@ const Button = styled.button`
 
   @media (max-width: 600px) {
     display: ${(props) => (props.$mobileOnly ? "none" : "flex")};
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
 `;
 

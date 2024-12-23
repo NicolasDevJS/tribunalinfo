@@ -29,7 +29,7 @@ const ServiceItem = styled.a`
   width: 250px;
   height: 350px;
   background: #fbfbfc;
-  border: 1px solid #e9e9ee;
+  border: 1px solid #00000039;
   border-radius: 8px;
   padding: 30px;
   text-decoration: none;

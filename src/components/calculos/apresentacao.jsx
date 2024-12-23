@@ -56,7 +56,7 @@ const Button = styled.button`
   background: #ffffff;
   border: 1px solid #cccccc;
   border-radius: 8px;
-  color: #0a2540;
+  color: ${({ themeColor }) => themeColor || "#0a2540"};
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s;
@@ -64,26 +64,6 @@ const Button = styled.button`
 
   &:hover {
     background: #e6e6fa;
-  }
-
-  &.orange {
-    color: #d2691e;
-  }
-
-  &.red {
-    color: #b22222;
-  }
-
-  &.green {
-    color: #228b22;
-  }
-
-  &.blue {
-    color: #0000cd;
-  }
-
-  &.black {
-    color: black;
   }
 `;
 
@@ -93,13 +73,14 @@ const Section = styled.div`
   background: #ffffff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  scroll-margin-top: 100px;
 `;
 
 const SectionTitle = styled.h2`
   font-size: 1.5rem;
-  color: #0a2540;
+  color: ${({ themeColor }) => themeColor || "#0a2540"};
   margin-bottom: 20px;
-  border-left: 4px solid #0a2540;
+  border-left: 4px solid ${({ color }) => color || "#0a2540"};
   padding-left: 10px;
 `;
 
@@ -117,10 +98,12 @@ const Card = styled.div`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.4s;
 
   &:hover {
-    background: #e6e6fa;
+    background: #d3d3f8;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
   }
 `;
 
@@ -154,7 +137,10 @@ const CardButton = styled.button`
 
 export default function Apresentacao() {
   const handleScroll = (id) => {
-    document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+    const target = document.getElementById(id);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   };
 
   return (
@@ -162,35 +148,27 @@ export default function Apresentacao() {
       <ApresentacaoContainer>
         <Title>Ferramentas Grátis de Cálculos Jurídicos</Title>
         <Description>
-          Calculadoras e ferramentas grátis para multiplicar sua produtividade na advocacia. 
-          Calcule rapidamente online quantas vezes quiser. Use as ferramentas o quanto precisar!
+          Calculadoras e ferramentas grátis para multiplicar sua produtividade
+          na advocacia. Calcule rapidamente online quantas vezes quiser. Use as
+          ferramentas o quanto precisar!
         </Description>
         <Divider />
         <ButtonGroup>
-          <Button className="blue" onClick={() => handleScroll("previdenciarias")}>
-            Calculadoras Previdenciárias
-          </Button>
-          <Button className="orange" onClick={() => handleScroll("bancarias")}>
-            Calculadoras Bancárias
-          </Button>
-          <Button className="red" onClick={() => handleScroll("trabalhistas")}>
-            Calculadoras Trabalhistas
-          </Button>
-          <Button className="green" onClick={() => handleScroll("correcaoMonetaria")}>
-            Correção Monetária
-          </Button>
-          <Button className="black" onClick={() => handleScroll("documentos")}>
-            Geradores de Documentos
-          </Button>
-          <Button className="blue" onClick={() => handleScroll("utilidades")}>
-            Utilidades para Advogados
-          </Button>
+          {data.map((section) => (
+            <Button
+              key={section.id}
+              themeColor={section.themeColor}
+              onClick={() => handleScroll(section.id)}
+            >
+              {section.title}
+            </Button>
+          ))}
         </ButtonGroup>
       </ApresentacaoContainer>
 
-      {Object.entries(data).map(([key, section]) => (
-        <Section id={key} key={key}>
-          <SectionTitle>{section.title}</SectionTitle>
+      {data.map((section) => (
+        <Section id={section.id} key={section.id}>
+          <SectionTitle themeColor={section.themeColor}>{section.title}</SectionTitle>
           <CardGrid>
             {section.cards.map((card, index) => (
               <Card key={index}>

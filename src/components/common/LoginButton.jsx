@@ -9,8 +9,7 @@ import { useAuth } from "../../hooks/useAuth";
 const LoginButtonWrapper = styled.button`
   padding: 10px 35px;
   background: #ffffff;
-  border: 1px solid #cccccc;
-  border-radius: 8px;
+  border: 1px solid #191970;
   color: #0a2540;
   font-size: 1rem;
   cursor: pointer;
@@ -20,7 +19,7 @@ const LoginButtonWrapper = styled.button`
   font-size: 20px;
 
   &:hover {
-    background: ${({ selected }) => (selected ? "#191970" : "#e6e6fa")};
+    background: ${({ selected }) => (selected ? "#191970" : "#dcdcfc")};
   }
 
   @media (max-width: 768px) {

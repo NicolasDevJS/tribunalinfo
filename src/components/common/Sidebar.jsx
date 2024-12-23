@@ -199,7 +199,7 @@ const Sidebar = () => {
           <Link href="/" passHref>
             <ItemButton>Gerenciar Assinatura</ItemButton>
           </Link>
-          <Link href="/" passHref>
+          <Link href="/planos" passHref>
             <ItemButton>Consultar Planos e Benefícios</ItemButton>
           </Link>
           <Divider />
