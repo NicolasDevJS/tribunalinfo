@@ -2,10 +2,10 @@
 
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import Header from "@/components/common/Header";
-import FooterR from "@/components/common/FooterR";
-import Loader from "@/components/common/Loader"; 
-import ProcessSearch from "@/components/pesquisajuridica/SeachProcess";
+import Header from "../../components/common/Header";
+import FooterR from "../../components/common/FooterR";
+import Loader from "../../components/common/Loader"; 
+import ProcessSearch from "../../components/pesquisajuridica/SeachProcess";
 
 const Container = styled.div`
   min-height: 100vh;

@@ -2,13 +2,13 @@
 
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import Header from "@/components/common/Header";
-import FooterR from "@/components/common/FooterR";
-import SearchSection from "@/components/home/SearchSection";
-import ServicosCarrossel from "@/components/home/ServicosCarrossel";
-import TopJurisprudencias from "@/components/home/TopJurisprudencias";
-import Servicos from "@/components/home/servicos";
-import Loader from "@/components/common/Loader"; 
+import Header from "../components/common/Header";
+import FooterR from "../components/common/FooterR";
+import SearchSection from "../components/home/SearchSection";
+import ServicosCarrossel from "../components/home/ServicosCarrossel";
+import TopJurisprudencias from "../components/home/TopJurisprudencias";
+import Servicos from "../components/home/servicos";
+import Loader from "../components/common/Loader"; 
 
 const Container = styled.div`
   min-height: 100vh;

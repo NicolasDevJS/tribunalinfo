@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Header from "@/components/common/Header";
+import Header from "../../components/common/Header";
 import styled from "styled-components";
-import Jurisprudencias from "@/components/juris/Jurisprudencias";
-import Loader from "@/components/common/Loader";
+import Jurisprudencias from "../../components/juris/Jurisprudencias";
+import Loader from "../../components/common/Loader";
 
 const Container = styled.div`
   min-height: 100vh;

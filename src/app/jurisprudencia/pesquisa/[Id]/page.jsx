@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { FaPrint } from "react-icons/fa";
-import decisoesData from "@/data/decisoes";
-import Header from "@/components/common/Header";
+import decisoesData from "../../../../data/decisoes";
+import Header from "../../../../components/common/Header";
 import jsPDF from "jspdf";
 
 const Container = styled.div`
