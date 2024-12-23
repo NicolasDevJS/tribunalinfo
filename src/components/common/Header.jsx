@@ -150,16 +150,16 @@ export default function Header() {
               Serviços para Você <IoIosArrowDown />
             </Button>
             <Dropdown $open={dropdownOpen} onMouseLeave={closeDropdown}>
-              <Link href="/gerador-peticoes" passHref legacyBehavior>
+              <Link href="/peticoes-trabalhistas" passHref legacyBehavior>
                 <DropdownItem>Gerador de Petições Trabalhistas</DropdownItem>
               </Link>
-              <Link href="/calculos-juridicos" passHref legacyBehavior>
+              <Link href="/painel-de-calculos" passHref legacyBehavior>
                 <DropdownItem>Cálculos Jurídicos</DropdownItem>
               </Link>
-              <Link href="/consulta-jurisprudencias" passHref legacyBehavior>
+              <Link href="/jurisprudencia" passHref legacyBehavior>
                 <DropdownItem>Consulta de Jurisprudências</DropdownItem>
               </Link>
-              <Link href="/consulta-processos" passHref legacyBehavior>
+              <Link href="/pesquisa-juridica" passHref legacyBehavior>
                 <DropdownItem>Consulta de Processos</DropdownItem>
               </Link>
             </Dropdown>

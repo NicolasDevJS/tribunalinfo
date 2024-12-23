@@ -4,9 +4,8 @@ import React, { useState, useEffect } from "react";
 import Header from "../../components/common/Header";
 import FooterR from "../../components/common/FooterR";
 import Loader from "../../components/common/Loader";
-import Assinaturas from "../../components/planosBeneficios/Assinaturas";
-import Pricing from "../../components/planosBeneficios/Planos";
 import styled from "styled-components";
+import Informativo from "../../components/peticoesTrabalhistas/Informativo";
 
 const PageContainer = styled.div`
   display: flex;
@@ -18,7 +17,7 @@ const MainContent = styled.main`
   flex: 1;
 `;
 
-export default function Planos() {
+export default function PeticoesTrabalhistas() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -34,8 +33,8 @@ export default function Planos() {
     <PageContainer>
       <Header />
       <MainContent>
-        <Assinaturas />
-        <Pricing />
+        <Informativo/>
+
       </MainContent>
       <FooterR />
     </PageContainer>

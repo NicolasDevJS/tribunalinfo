@@ -115,7 +115,7 @@ export default function Servicos() {
       title: "Gerador de Petições Trabalhistas",
       description:
         "Simplifique a criação de petições trabalhistas com um gerador prático e intuitivo, desenvolvido para atender às necessidades específicas de advogados e profissionais do direito.",
-      link: "/modelo",
+      link: "/peticoes-trabalhistas",
     },
     {
       icon: <FaCalculator />,

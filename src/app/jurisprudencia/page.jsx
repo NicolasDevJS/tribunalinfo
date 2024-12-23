@@ -17,7 +17,7 @@ const Jurisprudencia = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timeout = setTimeout(() => setLoading(false), 500); 
+    const timeout = setTimeout(() => setLoading(false), 100); 
     return () => clearTimeout(timeout);
   }, []);
 

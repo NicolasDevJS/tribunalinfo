@@ -182,7 +182,7 @@ const Sidebar = () => {
         <SidebarHeader>Bem-vindo, Fulano</SidebarHeader>
         <SidebarContent>
           <SectionTitle>Soluções Disponíveis</SectionTitle>
-          <Link href="/" passHref>
+          <Link href="/peticoes-trabalhistas" passHref>
             <ItemButton>Gerador de Petições Trabalhistas</ItemButton>
           </Link>
           <Link href="/painel-de-calculos" passHref>
@@ -191,7 +191,7 @@ const Sidebar = () => {
           <Link href="/jurisprudencia" passHref>
             <ItemButton>Consulta de Jurisprudências</ItemButton>
           </Link>
-          <Link href="/pesquisajuridica" passHref>
+          <Link href="/pesquisa-juridica" passHref>
             <ItemButton>Consulta de Processos</ItemButton>
           </Link>
           <Divider />
@@ -199,7 +199,7 @@ const Sidebar = () => {
           <Link href="/" passHref>
             <ItemButton>Gerenciar Assinatura</ItemButton>
           </Link>
-          <Link href="/planos" passHref>
+          <Link href="/assine-ja" passHref>
             <ItemButton>Consultar Planos e Benefícios</ItemButton>
           </Link>
           <Divider />
