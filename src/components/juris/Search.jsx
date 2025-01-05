@@ -52,6 +52,12 @@ const SearchIcon = styled.button`
   cursor: pointer;
   color: #191970;
   font-size: 24px;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+    right: 0px;
+    top: 55%;
+  }
 `;
 
 const FilterContainer = styled.div`

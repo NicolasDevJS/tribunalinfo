@@ -6,6 +6,13 @@ import Link from "next/link";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import decisoesData from "@/data/decisoes";
 
+
+function capitalizeText(text) {
+  return text
+    .toLowerCase()
+    .replace(/(?:^|\s)\S/g, (match) => match.toUpperCase());
+}
+
 const Container = styled.div`
   width: 100%;
   padding: 20px 0;
@@ -62,24 +69,29 @@ const Card = styled.div`
   color: #00264e;
   overflow: hidden;
   scroll-snap-align: center;
+  display: flex;
+  flex-direction: column;
+
 
   @media (max-width: 768px) {
-  
     height: 220px;
     padding: 15px;
   }
 
   @media (max-width: 480px) {
-
     height: 220px;
     padding: 10px;
-    right: 40px;
   }
 `;
 
 const CardTitle = styled.h3`
   font-size: 1rem;
   margin-bottom: 10px;
+  display: -webkit-box; 
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; 
+  overflow: hidden; 
+  text-overflow: ellipsis;
 
   @media (max-width: 768px) {
     font-size: 16px;
@@ -89,6 +101,7 @@ const CardTitle = styled.h3`
     font-size: 14px;
   }
 `;
+
 
 const Category = styled.p`
   font-size: 14px;
@@ -108,10 +121,13 @@ const Category = styled.p`
 const Description = styled.p`
   font-size: 0.8rem;
   color: #000;
-  overflow: auto;
-  text-overflow: ellipsis;
-  flex-grow: 1;
-  margin-bottom: 10px;
+  margin-bottom: 1px;
+  line-height: 1.4;
+  min-height: calc(1.4em * 3);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 7;
+  overflow: hidden;
 
   @media (max-width: 768px) {
     font-size: 12px;
@@ -121,7 +137,6 @@ const Description = styled.p`
     font-size: 12px;
   }
 `;
-
 
 const NavButton = styled.div`
   position: absolute;
@@ -137,7 +152,7 @@ const NavButton = styled.div`
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   svg {
-    font-size: 32px; 
+    font-size: 32px;
     color: #191970;
   }
 
@@ -209,9 +224,9 @@ export default function TopJurisprudencias() {
           {displayedItems.map((item, index) => (
             <Link href={`/jurisprudencia/pesquisa/${item.id}`} key={index} passHref>
               <Card>
-                <CardTitle>{item.descricaoClasse}</CardTitle>
-                <Category>{item.nomeOrgaoJulgador}</Category>
-                <Description>{item.ementa}</Description>
+                <CardTitle>{capitalizeText(item.descricaoClasse)}</CardTitle>
+                <Category>{capitalizeText(item.nomeOrgaoJulgador)}</Category>
+                <Description>{capitalizeText(item.ementa)}</Description>
               </Card>
             </Link>
           ))}

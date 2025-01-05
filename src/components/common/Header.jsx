@@ -86,7 +86,7 @@ const Button = styled.button`
 
   @media (max-width: 600px) {
     display: ${(props) => (props.$mobileOnly ? "none" : "flex")};
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 `;
 
@@ -123,6 +123,7 @@ const DropdownItem = styled.a`
 
   @media (max-width: 600px) {
     text-align: center;
+
   }
 `;
 

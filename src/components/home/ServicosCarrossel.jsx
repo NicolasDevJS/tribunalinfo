@@ -24,6 +24,7 @@ const Container = styled.div`
 const Title = styled.h2`
   font-size: 1.1rem;
   margin-bottom: 20px;
+  text-transform: capitalize; /* Garante que as primeiras letras de todas as palavras sejam maiúsculas */
 
   @media (max-width: 768px) {
     font-size: 20px;
@@ -86,11 +87,13 @@ const Card = styled.div`
 const CardTitle = styled.h3`
   font-size: 1rem;
   margin-bottom: 10px;
+  text-transform: capitalize; /* Garante a formatação correta */
 `;
 
 const Description = styled.p`
   font-size: 0.8rem;
   color: #000;
+  text-transform: capitalize; /* Aplica a capitalização em cada palavra */
 
   @media (max-width: 768px) {
     font-size: 14px;
